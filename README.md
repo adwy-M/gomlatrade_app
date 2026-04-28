@@ -1,16 +1,30 @@
-# gomlatrade_app
+# Gomla Trade App
 
-A new Flutter project.
+Flutter WebView app for Gomla Trade.
 
-## Getting Started
+## Build
 
-This project is a starting point for a Flutter application.
+Install dependencies:
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+flutter pub get
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Build with WooCommerce credentials when needed:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+flutter build apk --release \
+  --dart-define=WC_CONSUMER_KEY=your_key \
+  --dart-define=WC_CONSUMER_SECRET=your_secret
+```
+
+For iOS, run the final archive on macOS with Xcode installed:
+
+```bash
+cd ios
+pod install
+cd ..
+flutter build ipa --release \
+  --dart-define=WC_CONSUMER_KEY=your_key \
+  --dart-define=WC_CONSUMER_SECRET=your_secret
+```

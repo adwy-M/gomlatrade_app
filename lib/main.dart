@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
-import 'webview_screen.dart';
+import 'package:flutter/services.dart';
+import 'config/app_theme.dart';
+import 'screens/splash_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+      systemNavigationBarColor: Color(0xFF1E1E24), // AppTheme.cardDark
+      systemNavigationBarIconBrightness: Brightness.light,
+    ),
+  );
   runApp(const GomlatradeApp());
 }
 
@@ -12,17 +22,10 @@ class GomlatradeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Gomlatrade App',
+      title: 'GomlaTrade',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFFF7941D), // Assuming Orange primary
-          primary: const Color(0xFFF7941D),
-          secondary: const Color(0xFF0A58CA), // Assuming Blue secondary
-        ),
-        useMaterial3: true,
-      ),
-      home: const WebviewScreen(),
+      theme: AppTheme.darkTheme,
+      home: const SplashScreen(),
     );
   }
 }
